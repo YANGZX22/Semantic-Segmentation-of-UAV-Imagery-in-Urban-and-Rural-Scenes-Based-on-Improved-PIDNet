@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+new_runs/
+new_evaluations/
+new_profiles/
+.venv/
+.DS_Store

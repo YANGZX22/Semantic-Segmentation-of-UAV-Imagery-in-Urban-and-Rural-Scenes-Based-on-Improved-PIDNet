@@ -1,0 +1,61 @@
+CUDNN:
+  BENCHMARK: true
+  DETERMINISTIC: false
+  ENABLED: true
+GPUS: (0,)
+OUTPUT_DIR: '${OUTPUT}'
+LOG_DIR: '${OUTPUT}_logs'
+WORKERS: 4
+PRINT_FREQ: 10
+
+DATASET:
+  DATASET: UDD
+  ROOT: '${REPOSITORY}/datasets/udd'
+  TRAIN_SET: 'metadata/train.txt'
+  TEST_SET: 'metadata/val.txt'
+  NUM_CLASSES: 5                  # UDD5 类别数为 5
+
+MODEL:
+  NAME: deeplabv3plus
+  NUM_OUTPUTS: 1                  # 单头输出结构
+  # 可直接使用服务器上已缓存的 MobileNetV2 预训练权重
+  PRETRAINED: '${REPOSITORY}/pretrained/udd/mobilenet_v2-b0353104.pth'
+  ALIGN_CORNERS: true
+
+LOSS:
+  USE_OHEM: false                 # 常规交叉熵 Baseline
+  OHEMTHRES: 0.9
+  OHEMKEEP: 131072
+  BALANCE_WEIGHTS: [1.0]
+  SB_WEIGHTS: 0.0
+
+TRAIN:
+  IMAGE_SIZE:
+  - 512
+  - 512
+  BASE_SIZE: 512
+  BATCH_SIZE_PER_GPU: 8
+  SHUFFLE: true
+  BEGIN_EPOCH: 0
+  END_EPOCH: 80
+  RESUME: false
+  OPTIMIZER: sgd
+  LR: 0.01
+  WD: 0.0005
+  MOMENTUM: 0.9
+  NESTEROV: false
+  FLIP: true
+  MULTI_SCALE: true
+  IGNORE_LABEL: 255
+  SCALE_FACTOR: 16
+
+TEST:
+  IMAGE_SIZE:
+  - 512
+  - 512
+  BASE_SIZE: 512
+  BATCH_SIZE_PER_GPU: 8
+  FLIP_TEST: false
+  MULTI_SCALE: false
+  MODEL_FILE: ''
+  OUTPUT_INDEX: 0

@@ -1,0 +1,127 @@
+{
+  "dataset": "udd_global_preserved_v3",
+  "split_sizes": {
+    "train": 6912,
+    "val": 1170,
+    "test": 1134
+  },
+  "seed_order": [
+    304,
+    34,
+    3004
+  ],
+  "epochs": 80,
+  "batch_size": 8,
+  "models": [
+    {
+      "id": "unet",
+      "module": "unet",
+      "role": "baseline",
+      "recipe_origin": "archive",
+      "stats": "ImageNet/all1",
+      "prediction_grid": "original"
+    },
+    {
+      "id": "deeplabv3plus",
+      "module": "deeplabv3plus",
+      "role": "baseline",
+      "recipe_origin": "traced_predecessor",
+      "stats": "ImageNet/all1",
+      "prediction_grid": "original"
+    },
+    {
+      "id": "hrnet",
+      "module": "seg_hrnet_OS8",
+      "role": "baseline",
+      "recipe_origin": "traced_predecessor",
+      "stats": "ImageNet/all1",
+      "prediction_grid": "OS8"
+    },
+    {
+      "id": "pspnet",
+      "module": "pspnet",
+      "role": "baseline",
+      "recipe_origin": "traced_predecessor",
+      "stats": "ImageNet/all1",
+      "prediction_grid": "original"
+    },
+    {
+      "id": "bisenet",
+      "module": "bisenet",
+      "role": "baseline",
+      "recipe_origin": "traced_predecessor",
+      "stats": "ImageNet/all1",
+      "prediction_grid": "original"
+    },
+    {
+      "id": "pidnet_m",
+      "module": "pidnet",
+      "role": "baseline",
+      "recipe_origin": "archive_with_SB0_train_statistics",
+      "stats": "UDD_global_preserved_v3_train_only",
+      "model_size": "explicit M: m2/n3/planes64/ppm96/head128",
+      "prediction_grid": "OS8 semantic classifier; original DCU output OS1 where applicable"
+    },
+    {
+      "id": "pidnet_m_ca",
+      "module": "pidnet_CA",
+      "role": "ablation",
+      "recipe_origin": "archive_with_SB0_train_statistics",
+      "stats": "UDD_global_preserved_v3_train_only",
+      "model_size": "explicit M: m2/n3/planes64/ppm96/head128",
+      "prediction_grid": "OS8 semantic classifier; original DCU output OS1 where applicable"
+    },
+    {
+      "id": "pidnet_m_ca_dsc",
+      "module": "pidnet_CA_DSC",
+      "role": "ablation",
+      "recipe_origin": "archive_with_SB0_train_statistics",
+      "stats": "UDD_global_preserved_v3_train_only",
+      "model_size": "explicit M: m2/n3/planes64/ppm96/head128",
+      "prediction_grid": "OS8 semantic classifier; original DCU output OS1 where applicable"
+    },
+    {
+      "id": "pidnet_m_ca_dcu",
+      "module": "pidnet_CA_DCU",
+      "role": "ablation",
+      "recipe_origin": "archive_with_SB0_train_statistics",
+      "stats": "UDD_global_preserved_v3_train_only",
+      "model_size": "explicit M: m2/n3/planes64/ppm96/head128",
+      "prediction_grid": "OS8 semantic classifier; original DCU output OS1 where applicable"
+    },
+    {
+      "id": "pidnet_m_ca_dsc_dcu",
+      "module": "pidnet_CA_DSC_DCU",
+      "role": "ablation",
+      "recipe_origin": "archive_with_SB0_train_statistics",
+      "stats": "UDD_global_preserved_v3_train_only",
+      "model_size": "explicit M: m2/n3/planes64/ppm96/head128",
+      "prediction_grid": "OS8 semantic classifier; original DCU output OS1 where applicable"
+    }
+  ],
+  "test_set_held_out": true,
+  "efficiency_profiling": {
+    "models": 10,
+    "input": [
+      1,
+      3,
+      512,
+      512
+    ],
+    "precision": "FP32, TF32 disabled",
+    "warmup_iterations": 100,
+    "timed_rounds": 3,
+    "iterations_per_round": 100,
+    "weight_state": "seed304 external pretrained + initialized heads, synthetic input",
+    "FLOPs_convention": "PyTorch 2.8 FlopCounterMode supported conv/matmul operators, multiply-add=2; excludes pooling/interpolation/norm/activation/elementwise costs, recorded separately as uncounted operators",
+    "inference_path": "eval/inference_mode main head only, strip training-only auxiliary heads for all models; output logits resized512, excludes argmax/I/O/CPU transfers",
+    "parameters": "Both total training parameters and inference resident parameters",
+    "peak_memory": "PyTorch CUDA max_memory_allocated and max_memory_reserved; separate training peaks saved per epoch"
+  },
+  "models_per_seed": 10,
+  "execution": {
+    "gpus_per_run": 1,
+    "order": "seed, model",
+    "entry": "run_training.py"
+  }
+}

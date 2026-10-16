@@ -1,0 +1,46 @@
+{
+  "absent_classes": {
+    "test": [
+      7
+    ],
+    "train": [],
+    "val": []
+  },
+  "counts": {
+    "test": 154,
+    "train": 330,
+    "val": 110
+  },
+  "groups": {
+    "test": [
+      "block_4"
+    ],
+    "train": [
+      "block_0",
+      "block_2",
+      "block_3"
+    ],
+    "val": [
+      "block_1"
+    ]
+  },
+  "pair_checks": {
+    "train__test": {
+      "minimum_gap_pixels": 256.0,
+      "overlaps": 0
+    },
+    "train__val": {
+      "minimum_gap_pixels": 256.0,
+      "overlaps": 0
+    },
+    "val__test": {
+      "minimum_gap_pixels": 4864.0,
+      "overlaps": 0
+    }
+  },
+  "parents": {
+    "test": 154,
+    "train": 330,
+    "val": 110
+  }
+}

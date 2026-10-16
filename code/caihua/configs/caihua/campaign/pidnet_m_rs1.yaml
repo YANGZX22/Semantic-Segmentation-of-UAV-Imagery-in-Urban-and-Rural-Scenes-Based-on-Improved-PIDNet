@@ -1,0 +1,80 @@
+{
+  "EXPERIMENT": {
+    "PROTOCOL": "model_comparison_v1",
+    "GROUP": "pidnet_loss_recipe_probe_v1",
+    "DETERMINISM": "warn_only"
+  },
+  "CUDNN": {
+    "BENCHMARK": false,
+    "DETERMINISTIC": true,
+    "ENABLED": true
+  },
+  "GPUS": [
+    0
+  ],
+  "OUTPUT_DIR": "${REPOSITORY}/new_runs/caihua",
+  "LOG_DIR": "${REPOSITORY}/new_runs/caihua_logs",
+  "WORKERS": 4,
+  "PRINT_FREQ": 10,
+  "DATASET": {
+    "DATASET": "Caihua",
+    "ROOT": "${REPOSITORY}/datasets/caihua/rs1",
+    "TEST_SET": "val.lst",
+    "TRAIN_SET": "train.lst",
+    "NUM_CLASSES": 8
+  },
+  "MODEL": {
+    "INITIALIZATION": "external",
+    "NAME": "pidnet_m",
+    "NUM_OUTPUTS": 2,
+    "PRETRAINED": "${REPOSITORY}/pretrained/caihua/imagenet/PIDNet_M_ImageNet.pth.tar"
+  },
+  "LOSS": {
+    "CLASS_BALANCE": true,
+    "AUX_USE_OHEM": true,
+    "BOUNDARY_WEIGHT": 20.0,
+    "BOUNDARY_THRESHOLD": 0.8,
+    "USE_OHEM": true,
+    "OHEMTHRES": 0.9,
+    "OHEMKEEP": 65536,
+    "BALANCE_WEIGHTS": [
+      0.4,
+      1.0
+    ],
+    "SB_WEIGHTS": 0.0
+  },
+  "TRAIN": {
+    "IMAGE_SIZE": [
+      512,
+      512
+    ],
+    "BASE_SIZE": 512,
+    "BATCH_SIZE_PER_GPU": 8,
+    "SHUFFLE": true,
+    "BEGIN_EPOCH": 0,
+    "END_EPOCH": 200,
+    "RESUME": false,
+    "OPTIMIZER": "sgd",
+    "LR": 0.01,
+    "WD": 0.0005,
+    "MOMENTUM": 0.9,
+    "NESTEROV": false,
+    "FLIP": true,
+    "MULTI_SCALE": true,
+    "IGNORE_LABEL": 255,
+    "SCALE_FACTOR": 16
+  },
+  "TEST": {
+    "IMAGE_SIZE": [
+      512,
+      512
+    ],
+    "BASE_SIZE": 512,
+    "BATCH_SIZE_PER_GPU": 4,
+    "FLIP_TEST": false,
+    "MULTI_SCALE": false,
+    "MODEL_FILE": "",
+    "OUTPUT_INDEX": 1
+  },
+  "AUTO_RESUME": false
+}

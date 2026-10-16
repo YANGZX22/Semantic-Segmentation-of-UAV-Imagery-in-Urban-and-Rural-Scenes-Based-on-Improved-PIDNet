@@ -1,0 +1,84 @@
+{
+  "AUTO_RESUME": false,
+  "CUDNN": {
+    "BENCHMARK": false,
+    "DETERMINISTIC": true,
+    "ENABLED": true
+  },
+  "DATASET": {
+    "DATASET": "Caihua",
+    "EXTRA_TRAIN_SET": "",
+    "NUM_CLASSES": 8,
+    "ROOT": "${REPOSITORY}/datasets/caihua/rs2",
+    "TEST_SET": "val.lst",
+    "TRAIN_SET": "train.lst"
+  },
+  "EXPERIMENT": {
+    "DETERMINISM": "warn_only",
+    "GROUP": "architecture_comparison_v1",
+    "PROTOCOL": "model_comparison_v1"
+  },
+  "GPUS": [
+    0
+  ],
+  "LOG_DIR": "${REPOSITORY}/new_runs/caihua_logs",
+  "LOSS": {
+    "BALANCE_WEIGHTS": [
+      1.0
+    ],
+    "BOUNDARY_THRESHOLD": 0.8,
+    "BOUNDARY_WEIGHT": 20.0,
+    "CLASS_BALANCE": false,
+    "OHEMKEEP": 131072,
+    "OHEMTHRES": 0.9,
+    "SB_WEIGHTS": 0.0,
+    "USE_OHEM": false,
+    "AUX_USE_OHEM": false
+  },
+  "MODEL": {
+    "ALIGN_CORNERS": true,
+    "INITIALIZATION": "external",
+    "NAME": "deeplabv3plus",
+    "NUM_OUTPUTS": 1,
+    "PRETRAINED": "${REPOSITORY}/pretrained/caihua/mobilenet_v2-b0353104.pth"
+  },
+  "OUTPUT_DIR": "${REPOSITORY}/new_runs/caihua",
+  "PIN_MEMORY": true,
+  "PRINT_FREQ": 10,
+  "TEST": {
+    "BASE_SIZE": 512,
+    "BATCH_SIZE_PER_GPU": 4,
+    "FLIP_TEST": false,
+    "IMAGE_SIZE": [
+      512,
+      512
+    ],
+    "MODEL_FILE": "",
+    "MULTI_SCALE": false,
+    "OUTPUT_INDEX": 0
+  },
+  "TRAIN": {
+    "BASE_SIZE": 512,
+    "BATCH_SIZE_PER_GPU": 8,
+    "BEGIN_EPOCH": 0,
+    "END_EPOCH": 200,
+    "EXTRA_EPOCH": 0,
+    "EXTRA_LR": 0.001,
+    "FLIP": true,
+    "IGNORE_LABEL": 255,
+    "IMAGE_SIZE": [
+      512,
+      512
+    ],
+    "LR": 0.01,
+    "MOMENTUM": 0.9,
+    "MULTI_SCALE": true,
+    "NESTEROV": false,
+    "OPTIMIZER": "sgd",
+    "RESUME": false,
+    "SCALE_FACTOR": 16,
+    "SHUFFLE": true,
+    "WD": 0.0005
+  },
+  "WORKERS": 4
+}

@@ -1,0 +1,2 @@
+pretrained/** filter=lfs diff=lfs merge=lfs -text
+datasets/sources/** filter=lfs diff=lfs merge=lfs -text

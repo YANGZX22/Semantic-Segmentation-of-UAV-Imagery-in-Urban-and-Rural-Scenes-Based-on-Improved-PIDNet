@@ -1,0 +1,151 @@
+{
+  "actual_RGB_and_label_histograms_checked": 9216,
+  "class_names": [
+    "Building",
+    "Vegetation",
+    "Road",
+    "Vehicle",
+    "Background"
+  ],
+  "counts": {
+    "test": 1134,
+    "train": 6912,
+    "val": 1170
+  },
+  "excluded_count": 0,
+  "global_class_deviation_pp": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "global_class_percent": [
+    38.662174054318,
+    29.587381333112717,
+    13.374165114429262,
+    0.8612334728240967,
+    17.51504602531592
+  ],
+  "global_class_pixel_counts_after": [
+    934046849,
+    714807198,
+    323109010,
+    20806704,
+    423149343
+  ],
+  "global_class_pixel_counts_before": [
+    934046849,
+    714807198,
+    323109010,
+    20806704,
+    423149343
+  ],
+  "groups": 45,
+  "known_overlap_edges": 398,
+  "known_overlap_edges_cross_role": 0,
+  "metrics": {
+    "test": {
+      "class_percent": [
+        42.13944927935457,
+        18.22059469878989,
+        12.654602212249918,
+        0.8169897439408345,
+        26.168364065664786
+      ],
+      "filename_families": {
+        "0119_collection": 315,
+        "DJI_five_digit": 378,
+        "DJI_four_digit_and_heda": 441
+      },
+      "groups": 13,
+      "parents": 20,
+      "patches": 1134
+    },
+    "train": {
+      "class_percent": [
+        38.91582351039957,
+        31.670601390026235,
+        12.921359748752028,
+        0.94353672530916,
+        15.548678625513006
+      ],
+      "filename_families": {
+        "0119_collection": 180,
+        "DJI_five_digit": 252,
+        "DJI_four_digit_and_heda": 5040,
+        "numeric_sequence": 1440
+      },
+      "groups": 19,
+      "parents": 120,
+      "patches": 6912
+    },
+    "val": {
+      "class_percent": [
+        33.793408972585304,
+        28.29739758092114,
+        16.746622395311665,
+        0.417893564599192,
+        20.7446774865827
+      ],
+      "filename_families": {
+        "0119_collection": 225,
+        "DJI_five_digit": 378,
+        "DJI_four_digit_and_heda": 567
+      },
+      "groups": 13,
+      "parents": 20,
+      "patches": 1170
+    }
+  },
+  "migration": {
+    "test": {
+      "test": 423,
+      "train": 585,
+      "val": 126
+    },
+    "train": {
+      "test": 711,
+      "train": 5544,
+      "val": 657
+    },
+    "val": {
+      "test": 0,
+      "train": 783,
+      "val": 387
+    }
+  },
+  "moved_patches_from_original": 2862,
+  "old_training_configuration_unchanged": true,
+  "original_all_samples_present_exactly_once": true,
+  "pair_checks": {
+    "train__test": {
+      "cohort_component_collisions": 0,
+      "parent_collisions": 0,
+      "pixel_duplicates": 0
+    },
+    "train__val": {
+      "cohort_component_collisions": 0,
+      "parent_collisions": 0,
+      "pixel_duplicates": 0
+    },
+    "val__test": {
+      "cohort_component_collisions": 0,
+      "parent_collisions": 0,
+      "pixel_duplicates": 0
+    }
+  },
+  "parent_counts": {
+    "test": 20,
+    "train": 120,
+    "val": 20
+  },
+  "parents": 160,
+  "per_role_class_proportions_not_equalized": true,
+  "previous_versions_unchanged": 44,
+  "remote_deployed": false,
+  "source_and_retained_count": 9216,
+  "split_id": "overlap_global_preserved_v3",
+  "training_launched": false,
+  "unchanged_role_patches": 6354
+}
