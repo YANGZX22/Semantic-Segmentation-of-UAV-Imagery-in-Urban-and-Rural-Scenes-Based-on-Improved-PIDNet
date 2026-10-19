@@ -1,6 +1,6 @@
 # Semantic Segmentation of UAV Imagery in Urban and Rural Scenes Based on Improved PIDNet
 
-This repository contains the code, data splits, and training configurations for the paper of the same title.
+This repository contains the code, data splits, and training configurations for the paper of 'Semantic Segmentation of UAV Imagery in Urban and Rural Scenes Based on Improved PIDNet'.
 
 ## Method
 
@@ -8,8 +8,6 @@ The improved PIDNet is built on PIDNet-M and changes it at two points.
 
 - **CA-enhanced PAPPM.** Coordinate attention (CA) reweights the output of PAPPM, the context module of the I branch, along its rows and columns.
 - **Lightweight learnable semantic head.** Depthwise separable convolution (DSC) replaces the dense 3 × 3 convolution of the head, and depthwise convolutional upsampling (DCU) replaces the fixed ×8 bilinear interpolation with a learned kernel for each output map. All three prediction heads use this design.
-
-The losses of the auxiliary, main, and boundary heads are weighted 0.4, 1.0, and 20. Only the main head is used at inference.
 
 ## Models
 
@@ -25,8 +23,6 @@ The losses of the auxiliary, main, and boundary heads are weighted 0.4, 1.0, and
 | PIDNet + CA + DSC | `pidnet_m_ca_dsc` | PIDNet-M |
 | PIDNet + CA + DCU | `pidnet_m_ca_dcu` | PIDNet-M |
 | PIDNet + CA + DSC + DCU (ours) | `pidnet_m_ca_dsc_dcu` | PIDNet-M |
-
-UNet starts from random initialization. The other backbones start from the ImageNet weights in `pretrained/`.
 
 ## Datasets
 
@@ -77,4 +73,4 @@ python run_training.py --dataset udd --model pidnet_m_ca_dsc_dcu --seed 304 --ou
 
 ## License
 
-Copyright (C) 2026 Zixiao Yang. This repository is released under the [GNU General Public License v3.0](LICENSE). It includes code adapted from other open-source projects, which keep their original copyright notices and licenses, as listed in [LICENSE](LICENSE).
+Copyright (C) 2026 Zezhong Zheng, Zixiao Yang, Zixuan Teng, Shuang Yu, and Qiang Liu. This repository is released under the [GNU General Public License v3.0](LICENSE). It includes code adapted from other open-source projects, which keep their original copyright notices and licenses, as listed in [LICENSE](LICENSE). The Caihua Village dataset is not covered and cannot be redistributed under this license. It is available from [IEEE DataPort](https://ieee-dataport.org/documents/dataset-paper-semantic-segmentation-uav-imagery-urban-and-rural-scenes-based-improved), which gives its license.
